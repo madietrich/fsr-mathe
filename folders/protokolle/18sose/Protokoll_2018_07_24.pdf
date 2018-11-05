@@ -1,0 +1,322 @@
+\documentclass [
+12pt,
+a4paper,
+titlepage,
+%  bibtotoc,     % numbered
+%  liststotoc, % numbered
+oneside,
+%fleqn,            % Formulas left-aligned instead of centered
+%  leqno,            % Formula-numbering left instead of right
+%  draft,
+] {scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage [ngerman, UKenglish] {babel}
+
+% Seitenausrichtung
+\usepackage {setspace}
+\usepackage {geometry}
+
+% Aufzählungen
+\usepackage {enumitem}
+
+% Koma-Skript / Header
+\usepackage{scrpage2}
+
+% Mathe
+\usepackage [intlimits] {amsmath}
+\usepackage {amstext}
+\usepackage {amsfonts}
+\usepackage {amssymb}
+\usepackage {mathtools}
+\usepackage {amsthm}
+\usepackage {units}
+\usepackage [gen] {eurosym}
+\usepackage {relsize}
+%\usepackage {cleveref}
+\allowdisplaybreaks
+
+% Gleichungen innerhalb des Abschnittes numerieren
+%\numberwithin{equation}{section}
+%\renewcommand{\theequation}{\arabic{subsection}.\arabic{equation}}
+%\renewcommand{\theequation}{\thesection.\arabic{equation}}
+
+% Mathe: Umgebungsdefinitionen
+\theoremstyle{definition}
+\newtheorem{defi}{Definition}[section]
+\newtheorem*{beweis}{Beweis}
+
+\theoremstyle{plain}
+\newtheorem{satz}[defi]{Satz}
+\newtheorem{lemma}[defi]{Lemma}
+\newtheorem{kor}{Korrolar}[defi]
+\newtheorem*{bem}{Bemerkung}
+
+
+\theoremstyle{remark}
+\title{Protokoll vom 02.07.2018}
+
+
+% Farbgestaltung
+\usepackage [pdftext, table] {xcolor}
+\definecolor{Gray}{gray}{0.75}
+\definecolor{RubGrau}{cmyk}{0.03, 0.03, 0.03, 0.1}
+\definecolor{Gray}{gray}{0.75}
+\definecolor{ncs}{rgb}{0.0,0.65,0.31}  
+\definecolor{fb}{rgb}{0.0,0.45,0.73}
+
+% Tabellen
+\usepackage {booktabs}
+\usepackage {array}
+\usepackage {tabularx}
+\usepackage {multirow}
+\usepackage {multicol}
+
+% Bilder
+\usepackage [pdftex] {graphicx}
+\usepackage {subfigure}
+
+% Bibliographie & Zitation
+
+\usepackage [
+autostyle,
+german 	= quotes,
+english 	= british] {csquotes}
+\usepackage [
+style 		= authoryear,	
+%	dashed 	= false,
+uniquename 	= false,
+sorting 	= nyt,
+backend 	= bibtex8,
+%  	natbib	= true,
+isbn		= false,
+url			= false,
+doi			= false
+] {biblatex}
+%\DeclareLanguageMapping{german}{cms-german}
+%\bibliography{}
+
+% Verlinkungen
+\usepackage {url}
+\usepackage {hyperref}
+\hypersetup {colorlinks = {false}}
+\usepackage{
+  ngerman,
+  ae,
+  times,
+  %picins,
+  graphicx,
+  hyperref,
+  currvita}
+
+% Ränder 
+% \geometry{top=20mm, left=20mm, right=40mm, bottom=20mm}
+
+% scrpage2: Definition von Kopf- und Fusszeile
+%\pagestyle{scrheadings}
+%\clearscrheadfoot
+%\cfoot{\pagemark}.
+%\automark[section]{chapter}
+%\ihead{}
+%\ohead{}
+%\setheadsepline{0.8pt}
+% scrpage2: Ende der Definitionen
+
+%% Title
+%\title{}
+%\author{}
+%\date{}
+%End Preamble =============================================
+\begin{document} % HIER ### ANFANG %
+\clubpenalty = 10000
+\widowpenalty = 100
+\renewcommand{\contentsname}{Tagesordnung}
+\textbf{\LARGE Protokoll vom 24.07.2018}
+\tableofcontents
+
+\section{Regularien}
+\begin{cv}{}
+\begin{description}
+\item Anwesende: Hannah (bis 14:19), Wolf, Lars K., Carina, Sarah R., Tobi, Lukas, Ayla (bis 12:59), Natalie (ab 12:28, bis 12:59), Lea F. (ab 12:28, bis 12:59), Lars (ab 12:30), Jens (ab 12:49), Sarah G. (ab 12:55)
+\item Gäste: Luca (ab 13:30)
+\item Protokollant: Lukas
+\item Sitzungsleitung: Josy (einstimmig angenommen)
+\item Beschlussfähigkeit: ist gegeben
+\item Protokoll vom 09.07.2018 ist unter Vorbehalt der Änderungen angenommen (einmütig, 2 Enthaltungen)
+\item Beginn 12:26 Uhr
+\item Nächste Sitzung: \textcolor{red}{Dienstag, 31.7. 12 Uhr (Sondersitzung!)}
+\end{description}
+
+
+\section{Post}
+\begin{itemize}
+\item Wir haben eine Sonderausgabe der RUBeL und Werbematerial von der Uni Bremen bzgl. der Ingenieurinnen-Sommeruni erhalten.
+\end{itemize}
+
+
+\section{Berichte/Feedback}
+\subsection{Berichte}
+\begin{itemize}
+\item Lea T., Lea F. und Natalie haben gespült.
+\item Josy und Lars K. waren einkaufen und haben Pfand weggebracht.
+\end{itemize}
+
+\subsection{Feedback}
+\begin{itemize}
+\item der Bierempfang war gut besucht, es gab viele Fragen von Erstis zum weiteren Studienverlauf, aber leider waren wenige erfahrenere FR-Mitglieder unten anwesend, um diese zu beantworten -- hier lief die Kommunikation zwischen den FR-Mitgliedern suboptimal. Vor weiteren Veranstaltungen sollte besser abgesprochen sein, welche Leute bei solchen Aktionen unten / oben sitzen
+\item das Bier hätte gekühlt sein sollen
+\end{itemize}
+
+\section{Globales}
+
+\subsection{FSVK}
+\begin{itemize}
+\item Freddy ist gewählt
+\item Kunstgeschichte hat 50\% der Exkursionen bezahlt gekriegt
+\item am 10.11. findet eine Finanzschulung statt, Anmeldefrist: 29.10., 12 Uhr
+\item es soll ein AK zu Gender Studies gegründet werden
+\item es gibt einen Petitionslink zum Hochschulgesetz, es wird darum gebeten, diesen zu teilen
+\end{itemize}
+
+\subsection{Studienbeirat}
+\begin{itemize}
+\item hat getagt.
+\end{itemize}
+
+\subsection{N-Koop}
+\begin{itemize}
+\item hat sich im FR Chemie getroffen, alle anwesend bis auf Bio
+\item es wird von einer Teilnehmerzahl von 1000 ausgegangen (dies halten wir für überschätzt)
+\item weiter wurde u.a. gesprochen über die Anzahl der Spielfelder, Finanzen und die GEMA
+\item in der FSVK wurde noch nicht angefragt, ob mehrere Fachschaftsräte für dieselbe Veranstaltung Mittel beantragen können, dies soll am Montag geschehen
+\item es wurde klargestellt, dass der FR Mathe sich finanziell an der Planung nicht beteiligt, zumal die Zeit für eine VV zur Änderung der Finanzplanung unseres Wissens nach nicht ausreichen würde -- dies klärt Wolf bis zur nächsten Sitzung ab
+\end{itemize}
+
+\section{Tut / \LaTeX}
+\subsection{Einstellung LaTeX}
+\begin{itemize}
+\item die Bewerber sind noch nicht eingestellt, dies liegt aber daran, dass sich noch nicht auf einen Termin geeinigt wurde
+\end{itemize}
+\subsection{Tut-Büro}
+\begin{itemize}
+\item es ist nicht vorgesehen, dass die Tuts im neuen Gebäude ein Büro haben, allerdings können sie sich Zeiten in den Arbeitsräumen in der Bibliothek für ihre Sprechstunden reservieren
+\item es wird sich mit den Tuts zusammengesetzt, um zu besprechen, welche Sachen mit ins neue Gebäude genommen werden
+\end{itemize}
+
+\section{Ana II Klausur} 
+\begin{itemize}
+\item es sollte sich noch in die Essensliste eingetragen werden
+\item wichtig hierbei: Fingerfood (wir wollen kein Geschirr unten haben) und jeder sollte seine eigenen Vorratsdosen mitbringen und am Ende wieder mitnehmen
+\item Leute, die die Klausur schreiben, sollten das Essen eine halbe Stunde vorher am Fachschaftsraum abgeben
+\end{itemize}
+
+\section{Homepage} 
+\begin{itemize}
+\item die Website soll auf die RUB-Server umziehen, hierzu werde ich eine Mail an IT-Services schreiben und mit Wolf zusammenarbeiten, um die Website zeitnah bereitzustellen
+\end{itemize}
+
+\section{PC} 
+\begin{itemize}
+\item Uni hat einen PC für uns, den wir (nach wie vor) abholen müssten
+\item Lars und Carina kümmern sich darum
+\end{itemize}
+
+\section{T-Shirts} 
+\begin{itemize}
+\item wir wollen zum Winter hin wieder T-Shirts, Jacken und Pullis bestellen
+\item diesmal gibt es Unisex-Shirts, da die Größen der Frauen-Shirts zu klein ausgefallen waren
+\item Hannah informiert sich zu den aktuellen Preisen
+\item sollten nach Möglichkeit bei FR-Veranstaltungen getragen werden
+\item wer noch keine FR-Jacke / keinen FR-Pulli hat, kann diese(n) mit 5 Euro Eigenbeteiligung von der FSVK bezahlt kriegen, T-Shirts werden komplett selbst finanziert. Über diese zuvor beschlossene Regelung wurde erneut abgestimmt, dies wurde mit einer Gegenstimme und zwei Enthaltungen angenommen
+\end{itemize}
+
+\section{Zeitung} 
+\begin{itemize}
+\item findet heute nach der Sitzung statt
+\end{itemize}
+
+\section{Vorlesungsvorstellung} 
+\begin{itemize}
+\item die Vorlesungsvorstellung soll am 08.10. stattfinden
+\item Josy hat Max angeschrieben, damit er vorschlägt, welche Profs welche Vorlesung vorstellen und kontaktiert (sobald die Antwort von Max da ist) die Profs, erst per Mail und wenn nötig auch persönlich
+\item Josy beantragt einen Raum und redet mit Eva über Ankündigungen im Moodle
+\end{itemize}
+
+\section{Erstifrühstück} 
+\begin{itemize}
+\item soweit ist alles geplant, Räume auf NA 2 sind gebucht
+\item Termine: 05./12./19./26.09.
+\item Kaffeemaschine ist vorhanden, muss aber sofort nach dem Frühstück gereinigt werden
+\item am ersten Vorkurs-Tag (03.09.) sollen der FR vorgestellt und die Frühstückstermine angekündigt werden. Diesen Termin sollten die Leute im Kopf behalten, da es schön wäre, wenn möglichst viele Fachschaftler hier anwesend wären
+\item Wolf und Sarah G. kaufen ein
+\end{itemize}
+
+\section{Klausurfahrt} 
+\begin{itemize}
+\item bei allen im Doodle vorgeschlagenen Terminen haben sich zu wenige Leute gemeldet
+\item Alternativvorschlag von Carina: normaler Klausurtag unter der Woche + Klausursamstag mit Schwerpunkt auf Teambuilding (mit zwei Enthaltungen und einer Gegenstimme angenommen)
+\item weiter wurde vorgeschlagen, einen Klausurfahrttermin fürs nächste Semester bis spätestens zum Klausurtag dieses Semesters festzulegen
+\end{itemize}
+
+\section{Ersti-Woche} 
+\begin{itemize}
+\item Ersti-Montag (Sektempfang): Hörsaal ist gebucht, Carina backt Kekse, Hannah organisiert
+\item Ersti-Dienstag (Kneipentour): Sarah R. telefoniert
+\item Ersti-Donnerstag (Spieleabend): Wolf, Hannah und Ayla organisieren
+\item Ersti-Freitag (Fete): findet statt -- Wolf, Hannah und ich organisiere
+\end{itemize}
+
+\section{öffentliche Ankündigungen} 
+\begin{itemize}
+\item Facebook wegen Petition zum Hochschulgesetz
+\item Ana II Grillen
+\item Handy-Sammelaktion
+\item Bib hat nächste Woche wegen Umzug zu
+\end{itemize}
+
+\section{Finanzbeschlüsse}  
+\begin{itemize}
+\item Wolf geht für 300 Euro für alle Ersti-Frühstücke einkaufen (einmütig, 3 Enthaltungen)
+\end{itemize}
+
+\section{To-Do/Termine}
+\subsection{To-Do}
+\begin{itemize}
+\item Josy kümmert sich um die VorVor
+\item Carina macht die Kaffeemaschine sauber
+\item Lars und Carina gehen PC abholen
+\item alle schreiben Hannah, ob sie T-Shirt, Pulli oder Jacke haben wollen
+\item Sarah R. geht für Ana II einkaufen
+\item Hannah leistet Arbeit für die Erstiwoche
+\item jeder trägt sich auf der Mitbring-Liste für die Ana II Aktion ein
+\item Lars erstellt ein Klausurtags-Doodle
+\end{itemize}
+
+\subsection{Termine}
+\begin{itemize}
+\item 01.08. Ersti-Info / Ana-Klausur mit Buffet
+\item 14.08. 16-19 Uhr Maschinenbau-Klausur (siehe \glqq Sonstiges\grqq)
+\item 30.07.-03.08. Mathebibliothek ist zu wegen Umbau
+\item 03.09. Vorkurs-Montag
+\item 05.09. 1. Erstifrühstück
+\item 12.09. 2. Erstifrühstück
+\item 19.09. 3. Erstifrühstück
+\item 26.09. 4. Erstifrühstück
+\item 29.10. Anmeldefrist Finanzschulung (12 Uhr)
+\item 10.11. Finanzschulung
+\end{itemize}
+
+\section{Sonstiges}
+\begin{itemize}
+\item es wird noch nach Helfern für die Klausuraufsicht Mathe für Maschinenbau gesucht, hierzu sollen Interessierte sich bei Sarah R. melden
+\item wenn private Dinge in den Kühlschrank gelegt werden, die nicht konsumiert werden sollen, bitte mit Zettel markieren!
+\item \textcolor{red}{nächste Woche am Dienstag um 12 Uhr ist ausnahmsweise eine zusätztliche Sitzung!} (mit einer Gegenstimme und zwei Enthaltungen angenommen)
+\end{itemize}
+\subsection{FR-Tagebuch}
+\begin{itemize}
+\item hier sollen witzige Sprüche, Anekdoten, etc. aus dem FR-Umfeld gesammelt werden
+\end{itemize}
+
+\end{cv}
+Sitzungsende um 14:29 Uhr
+\end{document}
+

@@ -65,7 +65,6 @@ done
 sed -i -e "s/<body>/<body class=\"landing\">/g" -e "s/<header id=\"header\">/<header id=\"header\" class=\"alt\">/g" ./RELEASE/index.html
 
 cp -r ./folders/* ./RELEASE/
-cp -r ./images ./RELEASE/
 cp -r ./.do_not_alter/assets/ ./RELEASE/
 
 rm ./RELEASE/images/licence

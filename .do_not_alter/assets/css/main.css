@@ -2447,9 +2447,9 @@
 				vertical-align: middle;
 			}
 
-				ul.actions li:last-child {
+				/*ul.actions li:last-child {
 					padding-right: 0;
-				}
+				}*/
 
 			ul.actions.small li {
 				padding: 0 0.5em 0 0;

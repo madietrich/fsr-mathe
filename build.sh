@@ -25,6 +25,12 @@ fi
 
 mkdir ./RELEASE
 
+if [ -z "$FSR_DATE" ]
+then
+	FSR_DATE=$(date "+%-d.%-m.%Y")
+fi
+sed -e "s%{{date}}%${FSR_DATE}%" resources/footer.html.snippet > resources/footer_cur.html.snippet
+
 for i in ./pages/*.html.snippet
 do
 	j=${i%%.snippet}
@@ -58,9 +64,11 @@ do
 	cat ./resources/menu.html.snippet >> ./RELEASE/$k
 	cat ./.do_not_alter/02.html.snippet >> ./RELEASE/$k
 	cat $i >> ./RELEASE/$k
-	cat ./resources/footer.html.snippet >> ./RELEASE/$k
+	cat ./resources/footer_cur.html.snippet >> ./RELEASE/$k
 	cat ./.do_not_alter/99.html.snippet >> ./RELEASE/$k
 done
+
+rm resources/footer_cur.html.snippet
 
 sed -i -e "s/<body>/<body class=\"landing\">/g" -e "s/<header id=\"header\">/<header id=\"header\" class=\"alt\">/g" ./RELEASE/index.html
 
@@ -70,5 +78,4 @@ cp -r ./.do_not_alter/assets/ ./RELEASE/
 rm ./RELEASE/images/licence
 
 echo "Successfully built website to ./RELEASE"
-
 

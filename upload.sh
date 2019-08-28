@@ -5,6 +5,16 @@ C2="\033[0;34m"
 CE="\033[0;31m"
 NC="\033[0m"
 
+# check if necessary tools are installed
+for program in sftp sshpass ssh-keyscan sed
+do
+	command -v ${program} >/dev/null 2>&1 || {
+		echo -e "${CE}\"${program}\" is not installed on your system."
+		echo -e "Please install the package providing this command and re-run this script.${NC}"
+		exit 1
+	}
+done
+
 # ask for login data
 echo -e -n "${C1}Username: ${NC}"
 read user
@@ -28,6 +38,7 @@ fi
 
 # retrieve remote version
 echo -e "${C2}Retrieving version from server...\n"
+rm -rf fsr-mathe
 sshpass -p "${pw}" sftp ${user}@www-ftp.it-services.ruhr-uni-bochum.de << EOF
 get -r "fsr-mathe"
 exit
@@ -49,8 +60,16 @@ then
 	exit 1
 fi
 echo -e "${C2}Comparing to local version...\n"
-echo -e "${C1}Below you can see the differences between the remote and the local version.${NC}\n"
-diff -r fsr-mathe RELEASE 
+echo -e "${C1}Below you can see the differences between the remote and the local version."
+echo -e "(\"fsr-mathe\" is the remote version, \"RELEASE\" is the local version.)${NC}\n"
+difftotal=$(mktemp)
+diff -r fsr-mathe RELEASE | tee ${difftotal}
+if ! [ -s ${difftotal} ]
+then
+	echo -e "${CE}There are no differences. Exiting...${NC}"
+	rm ${difftotal}
+	exit 0
+fi
 echo ""
 
 # confirm upload
@@ -58,14 +77,90 @@ echo -e -n "${C1}Do you want to upload the contents of RELEASE? [(y)es/(n)o] ${N
 read yesno
 [[ ! $(echo "yes y") =~ (^|[[:space:]])${yesno}($|[[:space:]]) ]] && exit 0
 
-# upload
+# generate list of files to delete from webserver
+localfile=$(mktemp)
+localdir=$(mktemp)
+remotefile=$(mktemp)
+remotedir=$(mktemp)
+difffile=$(mktemp)
+diffdir=$(mktemp)
+cd fsr-mathe
+find . -type f | sort > ${remotefile}
+find . -type d | sort > ${remotedir}
+cd ..
+cd RELEASE
+find . -type f | sort > ${localfile}
+find . -type d | sort > ${localdir}
+cd ..
+diff ${remotefile} ${localfile} > ${difffile}
+diff ${remotedir} ${localdir} > ${diffdir}
+sed -i -e '/^</!d' -e 's/< //' ${difffile}
+sed -i -e '/^</!d' -e 's/< //' ${diffdir}
+if [ -s ${difffile} ] || [ -s ${diffdir} ]
+then
+	if [ -s ${difffile} ]
+	then
+		echo -e "\n${C1}The following files will be deleted from the server:\n${CE}"
+		cat ${difffile}
+	fi
+	if [ -s ${diffdir} ]
+	then
+		echo -e "\n${C1}The following folders will be deleted from the server:\n${CE}"
+		cat ${diffdir}
+	fi
+	echo -e -n "\n${C1}Is this okay? [(y)es/(n)o] ${NC}"
+	read yesno
+	if [[ ! $(echo "yes y") =~ (^|[[:space:]])${yesno}($|[[:space:]]) ]]
+	then
+		echo -e "\n${C1}Not deleting files from the server. Please remove the files by yourself."
+		delete=""
+	else
+		delete=1
+	fi
+fi
+
+# prepare the request
+request=$(mktemp)
+echo "cd fsr-mathe" > ${request}
+echo "put -r ." >> ${request}
+if ! [ -z ${delete} ]
+then
+	while read file
+	do
+		echo "rm ${file}" >> ${request}
+	done <${difffile}
+	while read dir
+	do
+		echo "rmdir ${dir}" >> ${request}
+	done <${diffdir}
+fi
+echo "exit" >> ${request}
+
+# upload to the webserver
 cd RELEASE
 echo -e "\n${C2}Uploading to server...\n"
-sshpass -p "${pw}" sftp ${user}@www-ftp.it-services.ruhr-uni-bochum.de << EOF
-cd fsr-mathe
-put -r .
-exit
-EOF
+sshpass -p "${pw}" sftp ${user}@www-ftp.it-services.ruhr-uni-bochum.de <${request}
+cd ..
+rm -f ${difftotal} ${localfile} ${localdir} ${remotefile} ${remotedir} ${difffile} ${diffdir} ${request}
 echo -e "\nDone!${NC}"
+
+# upload to git
+echo -e -n "\n${C1}Please enter a commit message: ${NC}"
+read cmsg
+echo -e "$\n{C2}"
+git add . | cat
+echo ""
+git commit -m "${cmsg}" | cat
+echo -e "\n${C1}Please check the above output and confirm the upload to git. [(y)es/(n)o] ${NC}"
+read yesno
+if  [[ ! $(echo "yes y") =~ (^|[[:space:]])${yesno}($|[[:space:]]) ]]
+then
+	git reset HEAD^
+	echo -e "\n${CE}The staged commit has been deleted."
+	echo -e "Please fix the problems, then upload the changed version to git."
+else
+	git push
+fi
+echo -e "\n${C1}"
 
 exit 0

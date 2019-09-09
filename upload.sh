@@ -161,6 +161,6 @@ then
 else
 	git push
 fi
-echo -e "\n${C1}"
+echo -e "\n${NC}"
 
 exit 0

@@ -147,7 +147,7 @@ echo -e "\nDone!${NC}"
 # upload to git
 echo -e -n "\n${C1}Please enter a commit message: ${NC}"
 read cmsg
-echo -e "$\n{C2}"
+echo -e "\n${C2}"
 git add . | cat
 echo ""
 git commit -m "${cmsg}" | cat

@@ -9,7 +9,7 @@ svg.style.width = svgwidth+"px";
 arrowColours = ["black","red","orange","blue"];
 var arrowHeight = 4;
 var arrowWidth = 5;
-for(i = 0;i < arrowColours.length;i++){
+for(var i = 0;i < arrowColours.length;i++){
 	var arrow = document.createElementNS("http://www.w3.org/2000/svg","marker");
 	arrow.setAttribute("id","head-"+arrowColours[i]);
 	arrow.setAttribute("orient","auto-start-reverse");
@@ -263,7 +263,7 @@ function Field(name,x,y) {
 		this.associated.push(association);
 	}
 	this.markAssociated = function() {
-		for(i = 0; i < this.associated.length; i++){
+		for(var i = 0; i < this.associated.length; i++){
 			lecture = this.associated[i]["node"];
 			path = this.associated[i]["path"];
 			for(prop in this.style.lectureBelongingToField.node)
@@ -274,7 +274,7 @@ function Field(name,x,y) {
 			}
 	}
 	this.resetAssociated = function() {
-		for(i = 0; i < this.associated.length; i++){
+		for(var i = 0; i < this.associated.length; i++){
 			lecture = this.associated[i]["node"];
 			path = this.associated[i]["path"];
 			for(prop in this.style.lectureBelongingToField.node)
@@ -439,7 +439,7 @@ function Lecture(name,x,y,nodeShape) {
 	this.markRequirements = function(){
 		if(!visited.includes(this)){
 			visited.push(this);
-			for(i = 0; i < this.associated.belongingTo.length; i++){
+			for(var i = 0; i < this.associated.belongingTo.length; i++){
 				field = this.associated.belongingTo[i]["node"];
 				path = this.associated.belongingTo[i]["path"];
 				for(prop in this.style.belongingTo.node)
@@ -448,7 +448,7 @@ function Lecture(name,x,y,nodeShape) {
 					field.svgtext.style[prop] = this.style.belongingTo.text[prop];
 				path.style.stroke = this.style.belongingTo.edge.selected;
 			}
-			for(i = 0; i < this.associated.requires.length; i++){
+			for(var i = 0; i < this.associated.requires.length; i++){
 				lecture = this.associated.requires[i]["node"];
 				path = this.associated.requires[i]["path"];
 				if(this.associated.requires[i]["bidirectional"])
@@ -475,7 +475,7 @@ function Lecture(name,x,y,nodeShape) {
 		}
 	}
 	this.markAssociated = function() {
-		for(i = 0; i < this.associated.requiredBy.length; i++){
+		for(var i = 0; i < this.associated.requiredBy.length; i++){
 			lecture = this.associated.requiredBy[i]["node"];
 			path = this.associated.requiredBy[i]["path"];
 			for(prop in this.style.requiredBy.node)
@@ -498,7 +498,7 @@ function Lecture(name,x,y,nodeShape) {
 	this.resetRequirements = function() {
 		if(!visited.includes(this)){
 			visited.push(this);
-			for(i = 0; i < this.associated.belongingTo.length; i++){
+			for(var i = 0; i < this.associated.belongingTo.length; i++){
 				field = this.associated.belongingTo[i]["node"];
 				path = this.associated.belongingTo[i]["path"];
 				for(prop in field.style.unselected.node)
@@ -507,7 +507,7 @@ function Lecture(name,x,y,nodeShape) {
 					field.svgtext.style[prop] = field.style.unselected.text[prop];
 				path.style.stroke = this.style.belongingTo.edge.unselected;
 			}
-			for(i = 0; i < this.associated.requires.length; i++){
+			for(var i = 0; i < this.associated.requires.length; i++){
 				lecture = this.associated.requires[i]["node"];
 				path = this.associated.requires[i]["path"];
 				if(this.associated.requires[i]["bidirectional"])
@@ -532,7 +532,7 @@ function Lecture(name,x,y,nodeShape) {
 		}
 	}
 	this.resetAssociated = function() {
-		for(i = 0; i < this.associated.requiredBy.length; i++){
+		for(var i = 0; i < this.associated.requiredBy.length; i++){
 			lecture = this.associated.requiredBy[i]["node"];
 			path = this.associated.requiredBy[i]["path"];
 			for(prop in lecture.style.unselected.node)

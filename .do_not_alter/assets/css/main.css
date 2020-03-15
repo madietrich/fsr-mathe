@@ -2734,6 +2734,27 @@
 			background-color: #f6f6f6;
 		}
 
+		.wrapper.style4 {
+			background-color: #cc0000;
+			color: #ffffff;
+			font-weight: 700;
+			font-size: larger;
+		}
+
+		.wrapper.style4 h2 {
+			color: #ffffff;
+		}
+
+		.wrapper.style4 header,h2 {
+			margin: 0 0 0;
+		}
+
+		.wrapper.style4 a {
+	text-decoration: none;
+	color: #cccccc;
+		}
+
+
 		.wrapper.style3 {
 			background-attachment: fixed;
 			background-image: url("images/overlay.png"), url("../../images/1280px-N-Gebaeude-RUB.jpg");

@@ -2735,14 +2735,14 @@
 		}
 
 		.wrapper.style4 {
-			background-color: #cc0000;
-			color: #ffffff;
+			background-color: #c00;
+			color: #fff;
 			font-weight: 700;
 			font-size: larger;
 		}
 
 		.wrapper.style4 h2 {
-			color: #ffffff;
+			color: #fff;
 		}
 
 		.wrapper.style4 header,h2 {
@@ -2751,7 +2751,7 @@
 
 		.wrapper.style4 a {
 	text-decoration: none;
-	color: #cccccc;
+	color: #444;
 		}
 
 

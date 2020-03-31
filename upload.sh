@@ -15,6 +15,17 @@ do
 	}
 done
 
+# check if server is specified
+if [ ! -e ./upload.server ]
+then
+	echo -e "${C1}You will need to specify the server address."
+	echo -e "Alternatively, put the server address into the file \"upload.server\".${NC}"
+	echo -e -n "${C1}Server: ${NC}"
+	read srv
+else
+	read -r srv<upload.server
+fi
+
 # ask for login data
 echo -e -n "${C1}Username: ${NC}"
 read user
@@ -29,17 +40,17 @@ then
 fi
 
 # add server to list of known SSH hosts
-if ! grep -q www-ftp.it-services.ruhr-uni-bochum.de ~/.ssh/known_hosts
+if ! grep -q ${srv} ~/.ssh/known_hosts
 then
 	echo -e -n "${C2}Adding RUB SFTP to list of known hosts...\n"
-	ssh-keyscan www-ftp.it-services.ruhr-uni-bochum.de >> ~/.ssh/known_hosts
+	ssh-keyscan ${srv} >> ~/.ssh/known_hosts
 	echo -e "${NC}\n"
 fi
 
 # retrieve remote version
 echo -e "${C2}Retrieving version from server...\n"
 rm -rf fsr-mathe
-sshpass -p "${pw}" sftp ${user}@www-ftp.it-services.ruhr-uni-bochum.de << EOF
+sshpass -p "${pw}" sftp ${user}@${srv} << EOF
 get -r "fsr-mathe"
 exit
 EOF
@@ -139,7 +150,7 @@ echo "exit" >> ${request}
 # upload to the webserver
 cd RELEASE
 echo -e "\n${C2}Uploading to server...\n"
-sshpass -p "${pw}" sftp ${user}@www-ftp.it-services.ruhr-uni-bochum.de <${request}
+sshpass -p "${pw}" sftp ${user}@${srv} <${request}
 cd ..
 rm -f ${difftotal} ${localfile} ${localdir} ${remotefile} ${remotedir} ${difffile} ${diffdir} ${request}
 echo -e "\nDone!${NC}"

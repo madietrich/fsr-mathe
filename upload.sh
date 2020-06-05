@@ -74,7 +74,7 @@ echo -e "${C2}Comparing to local version...\n"
 echo -e "${C1}Below you can see the differences between the remote and the local version."
 echo -e "(\"fsr-mathe\" is the remote version, \"RELEASE\" is the local version.)${NC}\n"
 difftotal=$(mktemp)
-diff -r fsr-mathe RELEASE | tee ${difftotal}
+diff -r fsr-mathe RELEASE | tee ${difftotal} | less
 if ! [ -s ${difftotal} ]
 then
 	echo -e "${CE}There are no differences. Exiting...${NC}"

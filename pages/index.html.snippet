@@ -13,7 +13,7 @@
 							<h2>Aktuelle Informationen</h2>
 						</header>
 						<p>
-							Infolge der andauernden <a href="https://www.who.int/news-room/q-a-detail/q-a-coronaviruses">COVID-19-Pandemie</a> werden die Ruhr-Universität und alle ihre Einrichtungen ab dem 18.3. bis auf Weiteres geschlossen. Bitte beachtet hierzu insbesondere die <a href="https://www.ruhr-uni-bochum.de/de/achtung-neue-sonderregelungen">Bekanntmachung der RUB zu neuen Sonderregelungen</a>, <a href="covid.html">unsere Informationen zu Sitzungen in der aktuellen Situation</a> und die <a href="https://einrichtungen.ruhr-uni-bochum.de/de/gremienwahlen">Regelungen zu den Gremienwahlen in diesem Semester</a> (diese finden per Briefwahl statt, Frist zur Anforderung der Wahlunterlagen ist der 3.7.)!
+							Infolge der andauernden <a href="https://www.who.int/news-room/q-a-detail/q-a-coronaviruses">COVID-19-Pandemie</a> werden die Ruhr-Universität und alle ihre Einrichtungen ab dem 18.3. bis auf Weiteres geschlossen. Bitte beachtet hierzu insbesondere die <a href="https://www.ruhr-uni-bochum.de/de/achtung-neue-sonderregelungen">Bekanntmachung der RUB zu neuen Sonderregelungen</a> sowie <a href="covid.html">unsere Informationen zu Sitzungen in der aktuellen Situation</a>!
 						</p>
 
 					</div>
@@ -34,11 +34,6 @@
 								<p>
 									Aktuell sind keine Aktionen anzukündigen. Neue Infos folgen bald!
 								</p>
-								<h5>sonstige</h5>
-								<p>
-									<!--Aktuell sind keine Termine anzukündigen.-->
-									Vom <strong>19.6. bis zum 24.6.</strong> bietet die zentrale Studienberatung ein Webinar zum Thema <strong>„Lernstrategien im Homeoffice“</strong> an. Näheres gibt's <a href="hilfe.html">hier</a>, <strong>Anmeldeschluss ist am 17.6.!</strong>
-								</p>
 								<h4 id="ufuf">Unsere Fakultät, unsere Forschung</h4>
 								<p>
 									Du suchst ein Fachgebiet für deine Abschlussarbeit?<br />
@@ -51,29 +46,47 @@
 								<p></p>
 								<h4>Fachschaftssitzungen</h4>
 								<h5>jeweils <del>im Fachschaftsraum IB 01/105</del> <ins><a href="covid.html">online</a></ins></h5>
-								<div class="table-wrapper">
+								<div id="sitzungen" class="table-wrapper">
 									<table>
 										<tbody>
 											<tr>
 												<td>Vorlesungszeit</td><td>donnerstags 14–16 Uhr</td>
 											</tr>
 											<tr>
-												<td>vorlesungsfreie Zeit</td><td>wird noch angekündigt</a></td>
+												<td>vorlesungsfreie Zeit</td><td>dienstags 10–12 Uhr in geraden KW</a></td>
 											</tr>
 										</tbody>
 									</table>
 								</div>
+								<script>
+									// Datum der ersten Sitzung nach neuer Terminierung
+									// Vorsicht: Monate beginnen bei 0
+									var date_anchor = new Date(Date.UTC(2020,6,21));
+									var interval = 14;
+									var table = document.getElementById("sitzungen");
+									var p = document.createElement("p");
+									var now = new Date();
+									var next = new Date(date_anchor);
+									while (next < now) {
+										next.setDate(next.getDate() + interval);
+									}
+									var days = ["","Montag","Dienstag","Mittwoch","Donnerstag","Freitag",""];
+									var next_str = "<strong>nächster Sitzungstag:</strong> " + days[next.getDay()] + ", ";
+									next_str += next.getDate() + "." + (next.getMonth() + 1) + ". ";
+									p.innerHTML = next_str;
+									table.parentNode.appendChild(p);
+								</script>
 								<h4 id="vv">Vollversammlung</h4>
 								<p>
 									Die nächste Vollversammlung der Fachschaft Mathematik wird hier angekündigt, sobald der Termin feststeht. Hier wird unter anderem der Fachschaftsrat neu gewählt. Es sind <strong>alle Studierenden der Mathematik</strong> ausdrücklich und herzlich eingeladen teilzunehmen.
 								</p>
 								<h4><a href="tutorium.html">Tutorium</a></h4>
-								<h5>Termine im Sommersemester</h5>
+								<h5>Klausurvorbereitungstutorien Analysis I</h5>
 								<div class="table-wrapper">
 									<table>
 										<tbody>
 											<tr>
-												<td>Mo 14–16</td><td>Mi 12–14</td><td>Fr 10–12</td>
+												<td>Mo 28.9 14–16</td><td>Mi 30.9. 12–14</td>
 											</tr>
 										</tbody>
 									</table>
@@ -82,38 +95,77 @@
 									Die Tutorien finden online statt, Details gibt es <a href="tutorium.html">hier</a>. Die Sitzungen sind 90-minütig und beginnen jeweils „c.t.“.
 								</p>
 							</div>
-							<div>
+							<div style="width:100%">
+								<h3>Du möchstest ab diesem Jahr Mathematik oder Informatik studieren?</h3>
+								<p>
+									Gute Neuigkeiten: diese Studiengänge sind im Wintersemester zulassungsfrei, du must also keinen Mindestnotenschnitt auf deinem Abiturzeugnis vorweisen können.
+									Die Einschreibung ist noch bis Ende November offen, aber wir würden dir empfehlen, nicht bis dahin zu warten, da die Vorlesungen bereits Anfang November starten.
+								</p>
+								<p>
+									Bei Fragen kannst du dich natürlich gerne an uns wenden. Weitere Informationen findest du hier:
+								</p>
+								<ul>
+									<li><a href="http://studienangebot.ruhr-uni-bochum.de/de/mathematik/bachelor-1-fach">Mathematik B.Sc.</a></li>
+									<li><a href="http://studienangebot.ruhr-uni-bochum.de/de/mathematik/bachelor-2-faecher">Mathematik B.A.</a></li>
+									<li><a href="http://studienangebot.rub.de/de/informatik/bachelor-1-fach">Informatik B.Sc.</a></li>
+								</ul>
+							</div>
+							<div style="width:100%">
 								<h3>Corona School: kostenlose Nachhilfe von Studis für Schüler*innen</h3>
 								<p>
 									Du bist Student*in und möchtest dich während der Corona-Krise sozial engagieren? Du begeisterst Leute für Inhalte aus deinem Fachgebiet und hast Spaß an der Vermittlung von Bildungsinhalten? Die <a href="https://www.corona-school.de/student">Corona School e.V.</a> sucht zur Zeit nach engagierten Student*innen, die Schüler*innen während der Corona-Krise bei ihren schulischen Aufgaben unterstützen und auf ihrem Weg zum selbstständigen Lernen begleiten möchten.
 								</p>
 							</div>
-							<div>
+							<div style="width:100%">
 								<h3>Mikrowellen an der RUB</h3>
 								<p>
 								<del>Der Fachschaftsrat Mathematik unterstützt das Projekt <em>Mikrowellen an der RUB</em>. Das heißt. dass wir eine Mikrowelle im Fachschaftsraum betreiben und diese zu den Öffnungszeiten allen Studierenden zur Verfügung stellen, um Flexibilität in der persönlichen Essensplanung zu fördern. Weitere Mikrowellen findet ihr bei den Fachschaftsräten <a href="https://www.ruhr-uni-bochum.de/fsgeo/">Geologie</a> (IA 00/163), <a href="http://www.komparatistik.ruhr-uni-bochum.de/studium/fachschaft/fachschaft.html.de">Komparatistik</a> (GB 03/50), <a href="https://www.ruhr-uni-bochum.de/fsr-romanistik/">Romanistik</a> (GB 7/159) und <a href="http://www.kath.ruhr-uni-bochum.de/aktuelles/fsr/news00659.html.de">Katholische Theologie</a> (GA 6/40) und <a href="https://www.ruhr-uni-bochum.de/philosophy/fsr/">Philosophie</a> (GA 3/36).</del> <ins>Die Mikrowelle steht in der aktuellen Situation leider nicht zur Verfügung. Wir lassen euch wissen, sobald sich dies ändert.</ins>
 								</p>
 							</div>
-							<div>
+							<div style="width:100%">
 								<h3>Informationen zu Stipendien und Austausch</h3>
-								<p>Die näheren Informationen sind jetzt <a href="stipendien.html">hier</a> zu finden. Aktuelle Bewerbungsfristen:</p>
+								<p>Die näheren Informationen sind jetzt <a href="stipendien.html">hier</a> zu finden. Aktuelle Fristen:</p>
 								<div class="table-wrapper">
 									<table>
 										<tbody>
 											<tr>
-												<td>19.6.</td><td>Anmeldung zum Stipendien-Infotag der RUB am 26.6.</td>
-											</tr>
-											<tr>
-												<td>21.6.</td><td>Anmeldung zur Infoveranstaltung „Stipendiaten im Gespräch“ am 24.6.</td>
-											</tr>
-											<tr>
-												<td>30.6.</td><td>Studienaufenthalt an Partnerhochschulen in Brasilien, Kolumbien, Mexiko, Chile, Argentinien, China, Russland und Weißrussland</td>
+												<td>zur Zeit ist leider nichts anzukündigen!</td>
 											</tr>
 										</tbody>
 									</table>
 								</div>
 							</div>
-							<div>
+							<div style="width:100%">
+								<h3>Fakultätsratswahlen</h3>
+								<p>Hier findet ihr die Wahlergebnisse der aktuellen Fakultätsratswahl an der Fakultät für Mathematik.<br> Diese Studierenden vertreten im kommenden Jahr eure Interessen im Fakultätsrat:</p>
+								<div class="table-wrapper fakrat">
+									<style>
+										div.fakrat td { padding: 0 0.75em 0; }
+										div.fakrat tr.elected { font-weight: bold; }
+									</style>
+									<table>
+										<tr><td>Wahlberechtigte:</td><td>730</td></tr>
+										<tr><td>Wähler*innen insgesamt:</td><td>18</td></tr>
+										<tr><td>Ungültige Stimmzettel:</td><td>0</td></tr>
+										<tr><td>Gültige Stimmzettel:</td><td>18</td></tr>
+										<tr><td>Wahlbeteiligung:</td><td>2,5 %</td></tr>
+									</table>
+									<table>
+										<tbody>
+											<tr class="elected"><td>1.</td><td>Kißler, Wolf Lennart</td><td>12</td><td>gewählt</td></tr>
+											<tr class="elected"><td>2.</td><td>Fritsche, Lea</td><td>8</td><td>gewählt</td></tr>
+											<tr class="elected"><td>3.</td><td>Smits, Laurent</td><td>8</td><td>gewählt</td></tr>
+											<tr><td>4.</td><td>Steenvoort, Lukas</td><td>6</td><td>Vertretung</td></tr>
+											<tr><td>5.</td><td>Heerten, Nils</td><td>4</td><td>Vertretung</td></tr>
+											<tr><td>6.</td><td>Wallböhmer, Hannah</td><td>2</td><td>Vertretung</td></tr>
+											<tr><td>7.</td><td>Fuhrmeister, Pia</td><td>2</td><td>Vertretung</td></tr>
+											<tr><td>8.</td><td>von Franz, Alexander</td><td>2</td><td>Vertretung</td></tr>
+											<tr><td>9.</td><td>Rauscher, Sarah</td><td>1</td><td>Vertretung</td></tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div style="width:100%">
 								<h3>Willst du immer über Neuigkeiten vom Fachschaftsrat informiert sein?</h3>
 								<p>Werde Mitglied der Mailingliste <a href="https://lists.ruhr-uni-bochum.de/mailman/listinfo/fachschaft-mathe">Fachschaft-Mathe</a> und sei stets auf dem Laufenden!</p> 
 							</div>
@@ -171,7 +223,7 @@
 								<div class="table-wrapper">
 									<table>
 										<tbody>
-											<tr><td><a href="https://www.ruhr-uni-bochum.de/ffm/pdf/Broschuere.pdf">Vorlesungsverzeichnis SoSe 2020</a></td></tr>
+											<tr><td><a href="https://www.ruhr-uni-bochum.de/ffm/pdf/Broschuere.pdf">Vorlesungsverzeichnis WiSe 2020/2021</a></td></tr>
 											<tr><td><a href="https://www.ruhr-uni-bochum.de/ffm/pdf/Erstiinfo.pdf">Ersti-Info 2019/2020</a></td></tr>
 											<tr><td><a href="downloads/ersti-info-wintersemester.pdf">Ersti-Reader 2019/2020</a></td></tr>
 										</tbody>

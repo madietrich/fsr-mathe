@@ -2823,3 +2823,9 @@ header:not(.alt) ul.dropdown-content {
 	left: 10%;
 	width: 90%;
 }
+
+/* Extension: alt text for icons */
+
+a.icon span {
+	display: none;
+}

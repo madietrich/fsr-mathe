@@ -2829,3 +2829,10 @@ header:not(.alt) ul.dropdown-content {
 a.icon span {
 	display: none;
 }
+
+
+/* make footer colour distinct from the preceding section */
+
+.style2 + #footer {
+	background: white;
+}

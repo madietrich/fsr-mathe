@@ -2836,3 +2836,43 @@ a.icon span {
 .style2 + #footer {
 	background: white;
 }
+
+/* Twitter feed */
+
+.twitter-feed {
+	height: 60vh;
+	overflow-y: scroll;
+	margin-bottom: 2em;
+  }
+  
+  .twitter-feed table {
+	margin: 0
+  }
+	
+  .twitter-feed p {
+	margin: 0;
+	font-size: smaller;
+  }
+  
+  .twitter-feed a {
+	text-decoration: unset;
+	color: unset;
+	font-style: italic;
+  }
+  
+  .twitter-feed a.gdpr-one-click {
+	color: red;
+	font-weight: bold;
+	font-style: unset;
+  }
+  
+  .twitter-feed img {
+	width: 100%;
+  }
+  
+  .twitter-date {
+	text-decoration: unset;
+	font-size: smaller;
+	float: right;
+	color: gray;
+  }

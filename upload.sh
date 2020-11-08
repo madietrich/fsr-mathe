@@ -6,7 +6,7 @@ CE="\033[0;31m"
 NC="\033[0m"
 
 # check if necessary tools are installed
-for program in sftp sshpass ssh-keyscan sed
+for program in sftp sshpass ssh-keyscan sed wget
 do
 	command -v ${program} >/dev/null 2>&1 || {
 		echo -e "${CE}\"${program}\" is not installed on your system."
@@ -82,6 +82,10 @@ then
 	exit 0
 fi
 echo ""
+
+# retrieve Twitter feed
+echo -e "${C2}Retrieving latest Twitter feed...\n\n${NC}"
+wget -q https://nitter.net/fsr_mathe_rub/rss -O RELEASE/assets/rss
 
 # confirm upload
 echo -e -n "${C1}Do you want to upload the contents of RELEASE? [(y)es/(n)o] ${NC}"

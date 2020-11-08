@@ -15,25 +15,71 @@
 									<h2>Neuigkeiten</h2>
 								</header>
 							</div>
+							<script>
+								// bindet den Twitter-Feed ein
+								//
+								// zur Info wegen Datenschutzbedenken: es wird keinerlei Verbindung zum Twitter-Server
+								// aufgebaut – der Feed wird bei Aktualisierung durch das Uploader-Skript über Nitter
+								// als RSS-Datei geladen und als Datei 'rss' im Ordner 'assets' abgelegt, dieses Skript
+								// wertet lediglich diese XML-Datei aus, erzeugt daraus eine Tabelle und ersetzt die
+								// Bilder zwecks DSGVO-Konformität durch einen Link
+								fetch('assets/rss')
+									.then(response => response.text())
+									.then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+									.then(data => {
+										console.log(data);
+										const items = data.querySelectorAll("item");
+										let feed = `<h3>aus unserem Twitter-Feed</h3>
+										<div class="table-wrapper twitter-feed">
+										<table>`;
+										items.forEach(el => {
+										let description = el.querySelector("description").innerHTML;
+										let match = description.match(/<!\[CDATA\[(.*)\]\]/s);
+										if (match)
+											description = match[1];
+										if (!description.match(/^<p.*\/p>$/s))
+											description = `<div>${description}</div>`;
+										let imgRe = /<img src="(\S*)"[^>]*>/;
+										while (description.match(imgRe)) {
+											let imgSrc = description.match(imgRe)[1];
+											description = description.replace(imgRe,`
+											<a class="gdpr-one-click" data-imgsrc="${imgSrc}">
+												Dieser Tweet enthält ein Bild von einem externen Server. Klicke auf diesen Text, um dieses zu sehen.
+											</a>
+											`);
+										}
+										let dateStr = el.querySelector("pubDate").innerHTML;
+										let creator = el.getElementsByTagName("dc:creator")[0];
+										if (creator)
+											dateStr = creator.innerHTML + ", " + dateStr;
+										feed += `
+											<tr>
+												<td>
+													${description}
+													<a class="twitter-date" href="${el.querySelector("link").innerHTML}">
+														${dateStr}
+													</a>
+												</td>
+											</tr>
+										`;
+										});
+										feed += `</table></div>`
+										document.querySelector('#news header.major').insertAdjacentHTML('afterend', feed);
+										function gdprSub(ev) {
+											let imgNode = document.createElement('img');
+											imgNode.src = ev.target.dataset.imgsrc;
+											ev.target.replaceWith(imgNode);
+										}
+										document.querySelectorAll('a.gdpr-one-click').forEach(el => el.addEventListener('click', gdprSub));
+									});
+							</script>
 							<div class="6u$ 12u$(medium)">
 								<h3>Die Termine für dieses Semester:</h3>
 								<h4>Veranstaltungen</h4>
 								<h5>FSR-Aktionen</h5>
-								<div class="table-wrapper">
-									<table>
-										<tbody>
-											<tr>
-												<td>Di 3.11., 18:00</td><td>Online-Campusführung</td>
-											</tr>
-											<tr>
-												<td>Mi 4.11., 18:00</td><td>Online-Spieleabend</td>
-											</tr>
-											<tr>
-												<td>Fr 6.11., 18:00</td><td>Online-Kneipenquiz</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
+								<p>
+									Aktuell sind keine Aktionen anzukündigen. Neue Infos folgen bald!
+								</p>
 								<h4>Fachschaftssitzungen</h4>
 								<h5>jeweils <del>im Fachschaftsraum IB 01/105</del> <ins><a href="covid.html">online</a></ins></h5>
 								<div id="sitzungen" class="table-wrapper">

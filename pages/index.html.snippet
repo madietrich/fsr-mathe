@@ -63,7 +63,11 @@
 											</tr>
 										`;
 										});
-										feed += `</table></div>`
+										feed += `</table>
+										</div>
+										<p style="font-size:xx-small;font-style:italic;line-height:normal">
+											 Deine Privatsphäre ist uns wichtig: du siehst hier eine Kopie unseres Twitter-Feeds, die alle 15 Minuten aktualisiert wird, baust dabei keine Verbindung zum Twitter-Server auf und externe Bilder werden nur auf Anfrage geladen.
+	                   					</p>`;
 										document.querySelector('#news header.major').insertAdjacentHTML('afterend', feed);
 										function gdprSub(ev) {
 											let imgNode = document.createElement('img');

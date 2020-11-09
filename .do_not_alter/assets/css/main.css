@@ -3,6 +3,7 @@
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css);
 /*@font-face{font-family:'FontAwesome';src:url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/webfonts/fa-regular-400.eot') format('embedded-opentype'),url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/webfonts/fa-regular-400.woff2') format('woff2'),url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/webfonts/fa-regular-400.woff') format('woff'),url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/webfonts/fa-regular-400.ttf') format('truetype'),url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/webfonts/fa-regular-400.svg') format('svg');font-weight:normal;font-style:normal};
 @font-face{font-family:'FontAwesome';src:url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/webfonts/fa-brands-400.eot') format('embedded-opentype'),url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/webfonts/fa-brands-400.woff2') format('woff2'),url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/webfonts/fa-brands-400.woff') format('woff'),url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/webfonts/fa-brands-400.ttf') format('truetype'),url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/webfonts/fa-brands-400.svg') format('svg');font-weight:normal;font-style:normal};*/
+
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/fontawesome.min.css);
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/solid.min.css);
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/brands.min.css);
@@ -2792,8 +2793,10 @@ nav ul.dropdown-content {
 	z-index: 1;
 	right: -2em;
 	float: right;
-	width: -moz-max-content; /* older FF */
-	width: -webkit-max-content; /* older Chrome */
+	width: -moz-max-content;
+	/* older FF */
+	width: -webkit-max-content;
+	/* older Chrome */
 	width: max-content;
 	text-align: right;
 }
@@ -2804,7 +2807,7 @@ nav ul.dropdown-content {
 
 header:not(.alt) ul.dropdown-content {
 	background-color: #fff;
-	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
 .dropdown:hover .dropdown-content {
@@ -2830,10 +2833,9 @@ a.icon span {
 	display: none;
 }
 
-
 /* make footer colour distinct from the preceding section */
 
-.style2 + #footer {
+.style2+#footer {
 	background: white;
 }
 
@@ -2843,36 +2845,36 @@ a.icon span {
 	height: 60vh;
 	overflow-y: scroll;
 	margin-bottom: 2em;
-  }
-  
-  .twitter-feed table {
+}
+
+.twitter-feed table {
 	margin: 0
-  }
-	
-  .twitter-feed p {
+}
+
+.twitter-feed p {
 	margin: 0;
 	font-size: smaller;
-  }
-  
-  .twitter-feed a {
+}
+
+.twitter-feed a {
 	text-decoration: unset;
 	color: unset;
 	font-style: italic;
-  }
-  
-  .twitter-feed a.gdpr-one-click {
+}
+
+.twitter-feed a.gdpr-one-click {
 	color: red;
 	font-weight: bold;
 	font-style: unset;
-  }
-  
-  .twitter-feed img {
+}
+
+.twitter-feed img {
 	width: 100%;
-  }
-  
-  .twitter-date {
+}
+
+.twitter-date {
 	text-decoration: unset;
 	font-size: smaller;
 	float: right;
 	color: gray;
-  }
+}

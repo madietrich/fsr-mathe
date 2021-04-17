@@ -232,7 +232,7 @@ function Field(name,x,y) {
 			}
 		},
 		font: {
-			"font-family": "Open Sans",
+			"font-family": "sans-serif",
 			"font-size": 12
 		}
 	};
@@ -390,7 +390,7 @@ function Lecture(name,x,y,nodeShape) {
 			}
 		},
 		font: {
-			"font-family": "Open Sans",
+			"font-family": "sans-serif",
 			"font-size": 12
 		}
 	};

@@ -2845,6 +2845,7 @@ a.icon span {
 	height: 60vh;
 	overflow-y: scroll;
 	margin-bottom: 2em;
+	max-width: 100%;
 }
 
 .twitter-feed table {
@@ -2854,6 +2855,10 @@ a.icon span {
 .twitter-feed p {
 	margin: 0;
 	font-size: smaller;
+}
+
+.twitter-feed p a {
+	word-break: break-all;
 }
 
 .twitter-feed a {
@@ -2877,4 +2882,30 @@ a.icon span {
 	font-size: smaller;
 	float: right;
 	color: gray;
+}
+
+/* break footer ul into rows (max. width 4 icons) if necessary */
+
+ul.icons div.break {
+	display: none;
+}
+
+@media only screen and (max-width: 550px) {
+	ul.icons div.break {
+		display: block;
+		margin-top: 1.5em;
+	}
+	#footer ul.icons li.break {
+		padding-right: 0;
+	}
+}
+
+@media only screen and (min-width: 736px) and (max-width: 800px) {
+	ul.icons div.break {
+		display: block;
+		margin-top: 1.5em;
+	}
+	#footer ul.icons li.break {
+		padding-right: 0;
+	}
 }

@@ -170,9 +170,14 @@ echo -e "\n${C1}Please check the above output and confirm the upload to git. [(y
 read yesno
 if  [[ ! $(echo "yes y") =~ (^|[[:space:]])${yesno}($|[[:space:]]) ]]
 then
-	git reset HEAD^
-	echo -e "\n${CE}The staged commit has been deleted."
-	echo -e "Please fix the problems, then upload the changed version to git."
+	echo -e "\n${C1}Delete staged commit? [(y)es/(n)o] ${NC}"
+	read yesno
+	if  [[ $(echo "yes y") =~ (^|[[:space:]])${yesno}($|[[:space:]]) ]]
+	then
+		git reset HEAD^
+		echo -e "\n${CE}The staged commit has been deleted."
+		echo -e "Please fix the problems, then upload the changed version to git."
+	fi
 else
 	git push
 fi

@@ -82,35 +82,7 @@
 										document.querySelectorAll('a.gdpr-one-click').forEach(el => el.addEventListener('click', gdprSub));
 									});
 							</script>
-							<div class="6u$ 12u$(medium)">
-								<h3>Ankündigung: Vollversammlung</h3>
-								<p><strong>Hallo zusammen,</strong></p>
-								<p><strong>am 08.07. findet ab 14:15 die Vollversammlung (VV) der Fachschaft Mathematik und Informatik über Zoom
-										statt.</strong><br>
-									Dort wird unter anderem der Fachschaftsrat neu gewählt.<br>
-									Wenn ihr Fragen dazu habt, was die Aufgaben des Fachschaftsrats sind oder euch wählen lassen möchtet, meldet
-									euch gern vorher bei Wolf <em>[dot]</em> Kissler <em>[at]</em> rub <em>[dot]</em> de. Natürlich könnt ihr
-									euch aber auch noch während der VV zur Wahl stellen lassen.</p>
-								<h4 id="vorläufige-tagesordnung">Vorläufige Tagesordnung</h4>
-								<ol>
-									<li>Regularien</li>
-									<li>Kassenbericht und Entlastung des Finanzteams</li>
-									<li>Untatenbericht und Entlastung des Fachschaftsrates</li>
-									<li>Neuwahl des Fachschaftsrates</li>
-									<li>Neuwahl des:der Finanzreferierenden</li>
-									<li>Vorschläge für die Besetzung von Kommissionen</li>
-									<li>Sonstiges</li>
-								</ol>
-								<h4 id="zoom-zugangsdaten">Zoom-Zugangsdaten</h4>
-								<p><strong>Direktlink:</strong> <a target="_blank"
-										href="https://ruhr-uni-bochum.zoom.us/j/65572378385?pwd=c0hobU9NQ29sd3Q3dVl0T0RNMnRtdz09"><em>klick</em></a><br><strong>Meeting-ID:</strong>
-									655 7237 8385<br><strong>Passwort:</strong> 194922</p>
-								<h4 id="was-ist-der-fachschaftsrat">Was ist der Fachschaftsrat?</h4>
-								<p>Der Fachschaftsrat Mathematik und Informatik ist die studentische Vertretung an der Fakultät für Mathematik.
-									Seine Hauptaufgaben sind die Planung von Veranstaltungen für die Studierenden sowie die Vertretung der
-									studentischen Interessen in den weiteren Gremien.</p>
-								<p><strong>Viele Grüße<br>
-									Euer Fachschaftsrat Mathematik und Informatik</strong></p>						
+							<div class="6u$ 12u$(medium)">					
 								<h3>Die Termine für dieses Semester:</h3>
 								<h4>Veranstaltungen</h4>
 								<h5>monatlicher Spieleabend</h5>
@@ -151,46 +123,52 @@
 												<td>Vorlesungszeit</td><td>dienstags 16–18 Uhr <em>(c.t.)</em></td>
 											</tr>
 											<tr>
-												<td>vorlesungsfreie Zeit</td><td>wird noch angekündigt</td>
+												<td>vorlesungsfreie Zeit</td><td>montags 14–16 Uhr <em>(c.t.)</em><br>in ungeraden Kalenderwochen</td>
 											</tr>
 										</tbody>
 									</table>
 								</div>
 								<script>
-									// Datum der ersten Sitzung nach neuer Terminierung
 									// Vorsicht: Monate beginnen bei 0
-									var date_anchor = new Date(Date.UTC(2021,3,13));
-									var interval = 7;
+									var intervals = [
+										// VL-Zeit SoSe '21
+										{
+											first: new Date(Date.UTC(2021, 3, 13, 14, 15)),
+											last: new Date(Date.UTC(2021, 6, 24)),
+											interval: 7
+										},
+										// VL-freie Zeit SoSe '21
+										{
+											first: new Date(Date.UTC(2021, 7, 2, 12, 15)),
+											last: new Date(Date.UTC(2021, 9, 11)),
+											interval: 14
+										}
+									]
 									var table = document.getElementById("sitzungen");
 									var p = document.createElement("p");
 									var now = new Date();
-									var next = new Date(date_anchor);
+									var next = new Date(intervals[0].first);
+									var k = 0;
 									while (next < now) {
-										next.setDate(next.getDate() + interval);
+										next.setDate(next.getDate() + intervals[k].interval);
+										if (next > intervals[k].last) {
+											next = new Date(intervals[++k].first);
+										}
 									}
-									var days = ["","Montag","Dienstag","Mittwoch","Donnerstag","Freitag",""];
+									var days = ["", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", ""];
 									var next_str = "<strong>nächster Sitzungstag:</strong> " + days[next.getDay()] + ", ";
 									next_str += next.getDate() + "." + (next.getMonth() + 1) + ". ";
 									p.innerHTML = next_str;
 									table.parentNode.appendChild(p);
 								</script>
 								<h4><a href="tutorium.html">mathematisches Tutorium</a></h4>
-								<h5>Termine im Sommersemester</h5>
-								<div class="table-wrapper">
-									<table>
-										<tbody>
-											<tr>
-												<td>Mo 14–16</td><td>Di 14–16</td><td>Mi 14–16</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
+								<h5>Termine in der vorlesungsfreien Zeit</h5>
 								<p>
-									Die Tutorien finden online statt, Details gibt es <a href="tutorium.html">hier</a>. Die Sitzungen sind 90-minütig und beginnen jeweils „c.t.“.
+									Vor den Ersti-Klausuren werden vereinzelt Wiederholungstutorien angeboten, diese werden über den Moodle-Kurs <em><a href="https://moodle.ruhr-uni-bochum.de/m/course/view.php?id=27246">Tutorium Mathematik</a></em> angekündigt! Die Tutorien finden online statt, Details gibt es <a href="tutorium.html">hier</a>.
 								</p>
-								<h4>Sprechstunden</h4>
+								<h4 id="vv">Vollversammlung</h4>
 								<p>
-									Die FSR-Sprechstunden für dieses Semester wurden noch nicht festgelegt, werden aber veröffentlicht, sobald sie feststehen.
+									Die nächste Vollversammlung der Fachschaft Mathematik & Informatik wird hier angekündigt, sobald der Termin feststeht. Hier wird unter anderem der Fachschaftsrat neu gewählt. Es sind <strong>alle Studierenden der Mathematik und der Informatik</strong> ausdrücklich und herzlich eingeladen teilzunehmen.
 								</p>
 							</div>
 							<div style="width:100%">
@@ -202,40 +180,8 @@
 							<div style="width:100%">
 								<h3>Informationen zu Stipendien und Austausch</h3>
 								<p>
-									Die näheren Informationen sind jetzt <a href="stipendien.html">hier</a> zu finden. Aktuelle Fristen und Termine:
+									Aktuell liegen keine Informationen vor, bald findest du <a href="stipendien.html">hier</a> und auf dieser Seite wieder aktuelle Fristen und Termine.
 								</p>
-								<h4><a href="https://international.ruhr-uni-bochum.de/de/online-info-events-des-international-office">Online-Beratungstermine zu Auslandsaufenthalten</a></h4>
-								<div class="table-wrapper">
-									<table>
-										<tbody>
-											<tr>
-												<td>Di, 27.4.</td><td>11–12 Uhr, <a href="https://ruhr-uni-bochum.zoom.us/j/91704100487?pwd=NnlIaVpvYzZvMEYrNG1xSXpsVlVqUT09">Meeting-ID: 917 0410 0487, Passwort: 640090</a></td>
-											</tr>
-											<tr>
-												<td>Do, 20.5.</td><td>15–16 Uhr, <a href="https://ruhr-uni-bochum.zoom.us/j/98173130185?pwd=NU55b2pVNzNzSldEanBxRzZFK0h4dz09">Meeting-ID: 981 7313 0185, Passwort: 257975</a></td>
-											</tr>
-											<tr>
-												<td>Do, 24.6.</td><td>10–11 Uhr, <a href="https://ruhr-uni-bochum.zoom.us/j/92381931820?pwd=UUV5UVI0VDAwU1NZdG0wS21Dc2ZGdz09">Meeting-ID: 923 8193 1820, Passwort: 887273</a></td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-								<h4>sonstige Fristen und Termine</h4>
-								<div class="table-wrapper">
-									<table>
-										<tbody>
-											<tr>
-												<td>Fr, 30.4.</td><td>Bewerbungsfrist <a href="https://www.gfps.org/">Stipendien für Auslandssemester in der Tschechischen Republik</a></td>
-											</tr>
-											<tr>
-												<td>Mi, 19.5.</td><td>Bewerbungsfrist <a href="https://studium.ruhr-uni-bochum.de/de/deutschlandstipendium-informationen-fuer-studierende">Deutschlandstipendium</a></td>
-											</tr>
-											<tr>
-												<td>Di, 1.6.</td><td>Bewerbungsfrist <a href="https://international.ruhr-uni-bochum.de/de/das-promos-programm">PROMOS</a></td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
 							<div style="width:100%">
 								<h3>Fakultätsratswahlen</h3>
 								<p>Hier findet ihr die Wahlergebnisse der aktuellen Fakultätsratswahl an der Fakultät für Mathematik.<br> Diese Studierenden vertreten im kommenden Jahr eure Interessen im Fakultätsrat:</p>
@@ -245,23 +191,22 @@
 										div.fakrat tr.elected { font-weight: bold; }
 									</style>
 									<table>
-										<tr><td>Wahlberechtigte:</td><td>730</td></tr>
-										<tr><td>Wähler*innen insgesamt:</td><td>18</td></tr>
+										<tr><td>Wahlberechtigte:</td><td>845</td></tr>
+										<tr><td>Wähler*innen insgesamt:</td><td>13</td></tr>
 										<tr><td>Ungültige Stimmzettel:</td><td>0</td></tr>
-										<tr><td>Gültige Stimmzettel:</td><td>18</td></tr>
-										<tr><td>Wahlbeteiligung:</td><td>2,5 %</td></tr>
+										<tr><td>Gültige Stimmzettel:</td><td>13</td></tr>
+										<tr><td>Wahlbeteiligung:</td><td>1,54 %</td></tr>
 									</table>
 									<table>
 										<tbody>
-											<tr class="elected"><td>1.</td><td>Kißler, Wolf Lennart</td><td>12</td><td>gewählt</td></tr>
-											<tr class="elected"><td>2.</td><td>Fritsche, Lea</td><td>8</td><td>gewählt</td></tr>
-											<tr class="elected"><td>3.</td><td>Smits, Laurent</td><td>8</td><td>gewählt</td></tr>
-											<tr><td>4.</td><td>Steenvoort, Lukas</td><td>6</td><td>Vertretung</td></tr>
-											<tr><td>5.</td><td>Heerten, Nils</td><td>4</td><td>Vertretung</td></tr>
-											<tr><td>6.</td><td>Wallböhmer, Hannah</td><td>2</td><td>Vertretung</td></tr>
-											<tr><td>7.</td><td>Fuhrmeister, Pia</td><td>2</td><td>Vertretung</td></tr>
-											<tr><td>8.</td><td>von Franz, Alexander</td><td>2</td><td>Vertretung</td></tr>
-											<tr><td>9.</td><td>Rauscher, Sarah</td><td>1</td><td>Vertretung</td></tr>
+											<tr class="elected"><td>1.</td><td>Fritsche, Lea</td><td>9</td><td>gewählt</td></tr>
+											<tr class="elected"><td>2.</td><td>Kißler, Wolf Lennart</td><td>9</td><td>gewählt</td></tr>
+											<tr class="elected"><td>3.</td><td>Smits, Laurent</td><td>7</td><td>gewählt</td></tr>
+											<tr><td>4.</td><td>Fuhrmeister, Pia</td><td>4</td><td>Vertretung</td></tr>
+											<tr><td>5.</td><td>Lennartz, Bastian</td><td>3</td><td>Vertretung</td></tr>
+											<tr><td>6.</td><td>Keuth, Alexandra</td><td>2</td><td>Vertretung</td></tr>
+											<tr><td>7.</td><td>Zoet, Florian</td><td>2</td><td>Vertretung</td></tr>
+											<tr><td>8.</td><td>Tennig, Thore</td><td>1</td><td>Vertretung</td></tr>
 										</tbody>
 									</table>
 								</div>
@@ -283,25 +228,25 @@
 								</header>
 							</div>
 							<div class="6u$ 12u$(medium)">
-								<h4>Der aktuelle Fachschaftsrat laut VV vom 28.1.2021:</h4>
+								<h4>Der aktuelle Fachschaftsrat laut VV vom 8.7.2021:</h4>
 								<ul>
-									<li>Elanur Bakir</li>
 									<li>Anastasia Braun</li>
 									<li>Gerret Bultmann</li>
 									<li>Frederik Busse</li>
 									<li>Pia Fuhrmeister</li>
-									<li>Shalina Gersching</li>
-									<li>Timo Glaser</li>
 									<li>Sarah Grabeck</li>
+									<li>Victoria Griehl</li>
 									<li>Nils Heerten</li>
+									<li>Luca Jaworek</li>
 									<li>Wolf Kißler</li>
 									<li>Bastian Lennartz</li>
+									<li>Ema Mincila</li>
 									<li>Tim Sauerland</li>
 									<li>Joel Smits</li>
 									<li>Laurent Smits</li>
 									<li>Lukas Steenvoort</li>
 									<li>Thore Tennig</li>
-									<li>Hannah Wallböhmer</li>
+									<li>Sebastian Wolf</li>
 									<li>Florian Zoet</li>
 								</ul>
 							</div>

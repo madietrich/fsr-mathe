@@ -87,7 +87,7 @@
 								<h4>Veranstaltungen</h4>
 								<h5>monatlicher Spieleabend</h5>
 								<p id="spieleabend">
-									Ab April 2021 wird es jeden <strong>vorletzten Mittwoch des Monats</strong> ab 18 Uhr einen <strong>Spieleabend</strong> auf Discord geben.
+									Im Wintersemester 2021/2021 wird es jeden <strong>dritten Mittwoch des Monats</strong> ab 18 Uhr einen <strong>Spieleabend</strong> auf Discord geben.
 								</p>
 								<script>
 									// Datum des ersten Spieleabends nach neuer Terminierung
@@ -96,14 +96,13 @@
 									var p = document.createElement("p");
 									var day = 3; // Mittwoch
 									var now = new Date();
-									var next = new Date(2021,0,1); // Anker muss für while-Code min. 2 Monate vor 1. Termin liegen
+									var next = new Date(2021,8,1); // Anker muss für while-Code min. 2 Monate vor 1. Termin liegen
 									while (next < now) {
-										next.setMonth(next.getMonth() + 2);
-										next.setDate(0);
+										next.setMonth(next.getMonth() + 1);
+										next.setDate(14);
 										while (next.getDay() != day) {
-											next.setDate(next.getDate() - 1);
+											next.setDate(next.getDate() + 1);
 										}
-										next.setDate(next.getDate() - 7);
 									}
 									var days = ["","Montag","Dienstag","Mittwoch","Donnerstag","Freitag",""];
 									var next_str = "<strong>nächster Termin:</strong> " + days[next.getDay()] + ", ";
